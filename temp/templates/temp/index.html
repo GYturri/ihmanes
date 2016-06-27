@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Actualiza rapido :D</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<link rel=stylesheet href=http://www.senamhi.gob.pe/intranet/scripts/intra01.css type=text/css>
+<script type="text/javascript" src='ajx/function.js'></script>
+<h1>Actualizar</h1>
+
+{% for item in object_list %}
+inicia form </br>
+
+<h1>afuera {{ forloop.counter }}</h1></br>
+	{% for esta in object_list %}
+		{% ifequal esta.estacion.id forloop.parentloop.counter %}
+		{% if forloop.first %}
+		<form action="http://www.senamhi.gob.pe/intranet/mod02/01/index_det.php" method="POST"  name="frm" id="frm" >	
+		<table width=100% border=0 cellpadding=0 cellspacing=0 bgcolor=#155A89>
+		<tr>
+		<h1>{{ esta.estacion.nombre }}</h1>	
+		<td>
+		<table width=100% border=0  cellpadding=2 cellspacing=1 bordercolor=#155A89 class="tit02">
+			<tr bgcolor=#E6EEF7>
+				<td colspan=8><div align=center>Estación  ,  - </div></td>
+			</tr>
+			<tr bgcolor=#CCDAE6>
+				<td width=10%><div align=center>DIA</div></td>
+				<td width=15%>MAX</td>
+				<td width=15%>MIN</td>
+				<td width=15%>PP</td>
+				<td width=15%>TM 7h</td>
+				<td width=15%>TM 13h</td>
+				<td width=15%>TM 19h</td>				
+			</tr>
+			{% else %}{% endif %}
+		{% else %}
+		{% endifequal %}
+
+
+		{% ifequal esta.estacion.id forloop.parentloop.counter %}
+			<tr bgcolor=#E6EEF7>
+				<td bgcolor=#DADEFA><div align=center>{{ esta.fecha | date:"d" }}<input name='Item{{ forloop.counter }}' type=hidden id='{{ forloop.counter }}' value='{{ dato.fecha | date:"d" }}' />
+												<input name='Ope{{ forloop.counter }}' type=hidden id='{{ forloop.counter' value='A' /></div></td>
+				<td ><input name='Max{{ forloop.counter }}' type=text id='{{ forloop.counter }}' value='{% if esta.maxi == None %}{% else %}{{ esta.maxi }}{% endif %}' size=3 maxlength=5 readonly class=txt onKeyPress="return j_validar(this,'disabled_letra');"/> </td>
+				<td ><input name='Min{{ forloop.counter }}' type=text id='{{ forloop.counter }}' value='{% if esta.mini == None %}{% else %}{{ esta.mini }}{% endif %}' size=3 maxlength=5 readonly class=txt onKeyPress="return j_validar(this,'disabled_letra');"/> </td>
+				<td ><input name='PPP{{ forloop.counter }}' type=text id='{{ forloop.counter }}' value='{% if esta.prec == None %}{% else %}{{ esta.prec }}{% endif %}' size=3 maxlength=5 readonly class=txt onKeyPress="return j_validar(this,'disabled_letra');"/> </td>
+				<td ><input name='T07{{ forloop.counter }}' type=text id='{{ forloop.counter }}' value='' size=3 maxlength=5 readonly class=txt onKeyPress="return j_validar(this,'disabled_letra');"/> </td>
+				<td ><input name='T13{{ forloop.counter }}' type=text id='{{ forloop.counter }}' value='' size=3 maxlength=5 readonly class=txt onKeyPress="return j_validar(this,'disabled_letra');"/> </td>
+				<td ><input name='T19{{ forloop.counter }}' type=text id='{{ forloop.counter }}' value='' size=3 maxlength=5 readonly class=txt onKeyPress="return j_validar(this,'disabled_letra');"/> </td>				
+			</tr>
+		{% else %}
+		{% endifequal %}
+		{% if forloop.last %}
+		<tr bgcolor=#CCDAE6>
+				<td colspan= 747 height=15 >
+				<input name=TotalItem type=hidden id=TotalItem value='31' />
+				<input name=txtEsta type=hidden id=txtEsta value='{{ item.estacion.codigo }}' />
+				<input name=txtYear type=hidden id=txtYear value='2015' />
+				<input name=txtMonth type=hidden id=txtMonth value='08' />
+				<input name=dr type=hidden id=dr value='13' />				
+				</td>
+			</tr>
+			<tr bgcolor=#E6EEF7>
+				<td colspan= 7 height=40 >
+				<div align=center> 
+				<input type="submit" class="txt" name="Envio" value="Aceptar" onClick="willSubmit=confirm('&iquest;Esta seguro de que quiere enviar los datos?');return willSubmit;" >
+			    <input type="button" class="txt" value="Cancelar"  >&nbsp;&nbsp;  
+			    &nbsp;<a href="bajar_excel.php?txtEsta=&txtYear=&txtMonth=&dr=&Opc=01" ><img src='exxcel.png' width='32' height='32' border=0/></a>&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;<a href="bajar_excel.php?txtEsta=&txtYear=&txtMonth=&dr=&Opc=02" ><img src='excel.png' width='32' height='33' border=0 /></a>&nbsp;
+				</div>
+				</td>
+			</tr>
+		</table>
+	</td>	
+	</tr>
+	</table></form>
+		{% else %}<li>{% endif %}
+	{% endfor %}
+	
+fin formulario
+{% empty %} </br>
+     <li> No hay datos. </li>
+{% endfor %}
+</body>
+</html>

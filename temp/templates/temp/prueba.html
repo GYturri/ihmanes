@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>prueba</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<h1>prueba</h1>
+{% for esta in dato %}
+{% load humanize %}
+	{{ esta.maxi | linebreaksbr }}<br>
+
+{% endfor %}
+</body>
+</html>

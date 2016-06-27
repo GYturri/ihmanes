@@ -1,0 +1,82 @@
+<link href="http://puno.senamhi.gob.pe/web/intranet/cientifico/styles/general.css" rel="stylesheet" type="text/css">
+<link href="http://puno.senamhi.gob.pe/web/intranet/cientifico/styles/table.css" rel="stylesheet" type="text/css">
+<div align="center">
+    <table width="440" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><p align="center" class="tit_prono">VISTA PREVIA DE DATOS - CONVENIO CARE</p></td>
+        </tr>
+      <tr>
+        <td><div align="center" class="tit_prono">CO. {{ estaenpuno.nombre }} - {{ estaes.id }} - {{ numero }}</div></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    
+    <form action="http://puno.senamhi.gob.pe/web/intranet/cientifico/pagcare/care_edit_save.php?id={{ estaes.id }}" method="post">
+  	<table width="800" border="0" class="table_form">
+		<tr>
+			<td>
+	  <table width="800" border="1" align="center" cellpadding="0" cellspacing="0" class="torrents">
+						<thead>
+							<tr>
+                            	<th width="59"><strong class="tit_table">dia-mes-a&ntilde;o</strong></th>
+								<th width="63" height="30"><strong class="tit_table">Tem. Min.</strong></th>
+								<th width="63"><strong class="tit_table">Tem. Min. Normal</strong></th>
+                                <th width="84"><strong class="tit_table">Temp. Max</strong></th>
+                                <th width="75"><strong class="tit_table">Temp. Max. Normal</strong></th>
+                                <th width="73"><strong class="tit_table">Precipitacion</strong></th>
+                                <th width="150"><strong class="tit_table">Condicion actual</strong></th>
+                                <th width="130"><strong class="tit_table">Visible ?</strong></th>
+                            </tr>
+						</thead>
+                        {% for va in temp %}
+                       <tbody>
+							<tr class="r1">
+								<td class="c4" height="30"><div align="center"><span class="cont_table">2016-06-{{ va.fecha | date:"d" }}</span></div></td>
+                                <td class="c4" height="30"><div align="left"><span class="cont_table"><input name='tmin{{ forloop.counter }}' type='text' class='input_txt' id='tmin{{ forloop.counter }}' value='{% if va.mini == None %}{% else %}{{ va.mini | linebreaksbr }}{% endif %}' size='5'/></span></div></td>
+                                <td class="c4" height="30"><div align="left"><span class="cont_table"><input name='tmin_normal{{ forloop.counter }}' type='text' class='input_txt' id='tmin_normal{{ forloop.counter }}' value='' size='5'/></span></div></td>
+                                <td class="c4" height="30"><div align="left"><span class="cont_table"><input name='tmax{{ forloop.counter }}' type='text' class='input_txt' id='tmax{{ forloop.counter }}' value='{% if va.maxi == None %}{% else %}{{ va.maxi | linebreaksbr }}{% endif %}' size='5'/></span></div></td>
+								<td class="c4" height="30"><div align="left"><span class="cont_table"><input name='tmax_normal{{ forloop.counter }}' type='text' class='input_txt' id='tmax_normal{{ forloop.counter }}' value='' size='5'/></span></div></td>
+								<td class="c4" height="30"><div align="left"><span class="cont_table"><input name='prec{{ forloop.counter }}' type='text' class='input_txt' id='prec{{ forloop.counter }}' value='{% if va.prec == None %}{% elif va.prec == -888 %}0.1{% else %}{{ va.prec | linebreaksbr }}{% endif %}' size='5'/></span></div></td>
+                                <td class="c4" height="30"><div align="left"><span class="cont_table">
+                                <select name='cond_actual{{ forloop.counter }}' class='select' id='cond_actual'><option selected>::::</option><option>::::</option><option>Cielo despejado</option><option>Nubes dispersas</option><option>Nublado parcial</option><option>Nublado</option><option>Cubierto</option><option>Lluvia ligera</option><option>Lluvi intermitente</option><option>Chubasco</option><option>Granizada</option><option>Nieve y/o aguanieve</option><option>Nieve</option></select>								</span></div></td>
+                                <td class="c4" height="30"><div align="left"><span class="cont_table">
+								<select name='visibilidad{{ forloop.counter }}' class='select' id='visibilidad'><option selected>Si</option><option>::::</option><option>Si</option><option>No</option></select>                                </span></div></td>
+								<input type='hidden' name='id_datos{{ forloop.counter }}' value='{{ numero|add:forloop.counter }}'>							</tr>
+						</tbody>
+                        {% endfor %}
+           			  </table>
+			</td>
+		</tr>
+  	</table>
+	<br />
+    <table>
+  		<tr>
+      		<td>
+            	<div align="right">
+            		<input type='submit' class='button' name='cmd_save' id='cmd_save' value='Guardar' />
+   	      		</div>
+         	</td>
+      	  	<td>&nbsp;</td>
+      	  	<td>
+            	<div align="left">
+      	    		<input name="button" type="reset" class="button" id="button" value="Restablecer" />
+   	      		</div>
+         	</td>
+    	</tr>
+	</table>
+</form>
+<!--volver a inicio -->
+<br />
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="84">&nbsp;</td>
+    <td width="512"><div align="center"><span class="cont_main"><span class="cont_table"><a href='../index.php?p=care_list'>Volver</a></span></span></div></td>
+    <td width="104">&nbsp;</td>
+  </tr>
+</table>
+</div>

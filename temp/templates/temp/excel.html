@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Excel</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <h3>CO. {{ estaes.nombre }} - {{ estaes.id }}</h3>
+  <table>
+  <tr>
+    <td>----Jul-</td>
+    <td>Ago-</td>
+    <td>Set-</td>
+    <td>Oct-</td>
+    <td>Nov-</td>
+    <td>Dic-</td>
+  </tr>
+  </table>
+<table>
+  <tr>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes1 %}
+      <tr>
+        <td>{{ va.prec | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </th>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes2 %}
+      <tr>
+        <td>{{ va.prec | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </th>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes3 %}
+      <tr>
+        <td>{{ va.prec | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+  </th>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes4 %}
+      <tr>
+        <td>{{ va.prec | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </th>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes5 %}
+      <tr>
+        <td>{{ va.prec | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+  </th>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes6 %}
+      <tr>
+        <td>{{ va.prec | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </th>
+  </tr>
+</table>
+</body>
+</html>

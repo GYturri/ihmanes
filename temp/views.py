@@ -39,7 +39,7 @@ class Puno(DetailView):
 		valor = Estacion.objects.get(codpuno = self.kwargs['pk'])
 		context['estaenpuno'] = valor
 		context['temp'] = TermoPlu.objects.filter(estacion = valor)
-		context['numero'] = (int(valor.codpuno) - 1 ) * 30
+		context['numero'] = (int(valor.codpuno) - 1 ) * 31
 		return context
 	
 def prueba(request, pk):
@@ -56,10 +56,10 @@ class Excel(DetailView):
 		context = super(Excel, self).get_context_data(**kwargs)
 		valor = Estacion.objects.get(id = self.kwargs['pk'])
 		context['miestacion'] = valor #tratar de eliminar
-		context['mes1'] = TermoPlu.objects.filter(estacion = valor, fecha__month=7)
-		context['mes2'] = TermoPlu.objects.filter(estacion = valor, fecha__month=8)
-		context['mes3'] = TermoPlu.objects.filter(estacion = valor, fecha__month=9)
-		context['mes4'] = TermoPlu.objects.filter(estacion = valor, fecha__month=10)
-		context['mes5'] = TermoPlu.objects.filter(estacion = valor, fecha__month=11)
-		context['mes6'] = TermoPlu.objects.filter(estacion = valor, fecha__month=12)
+		context['mes1'] = TermoPlu.objects.filter(estacion = valor, fecha__month=1)
+		context['mes2'] = TermoPlu.objects.filter(estacion = valor, fecha__month=2)
+		context['mes3'] = TermoPlu.objects.filter(estacion = valor, fecha__month=3)
+		context['mes4'] = TermoPlu.objects.filter(estacion = valor, fecha__month=4)
+		context['mes5'] = TermoPlu.objects.filter(estacion = valor, fecha__month=5)
+		context['mes6'] = TermoPlu.objects.filter(estacion = valor, fecha__month=6)
 		return context

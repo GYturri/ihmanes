@@ -10,12 +10,12 @@
   <h3>CO. {{ estaes.nombre }} - {{ estaes.id }}</h3>
   <table>
   <tr>
-    <td>----Jul-</td>
-    <td>Ago-</td>
-    <td>Set-</td>
-    <td>Oct-</td>
-    <td>Nov-</td>
-    <td>Dic-</td>
+    <td>----Ene-</td>
+    <td>Feb-</td>
+    <td>Mar-</td>
+    <td>Abr-</td>
+    <td>May-</td>
+    <td>Jun-</td>
   </tr>
   </table>
 <table>
@@ -25,7 +25,7 @@
     <tbody>
       {% for va in mes1 %}
       <tr>
-        <td>{{ va.prec | linebreaksbr }}</td>
+        <td>{{ va.mini | linebreaksbr }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -36,9 +36,15 @@
     <tbody>
       {% for va in mes2 %}
       <tr>
-        <td>{{ va.prec | linebreaksbr }}</td>
+        <td>{{ va.mini | linebreaksbr }}</td>
       </tr>
       {% endfor %}
+      <tr>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>-</td>
+      </tr>
     </tbody>
   </table>
   </th>
@@ -47,12 +53,9 @@
     <tbody>
       {% for va in mes3 %}
       <tr>
-        <td>{{ va.prec | linebreaksbr }}</td>
+        <td>{{ va.mini | linebreaksbr }}</td>
       </tr>
       {% endfor %}
-      <tr>
-        <td>-</td>
-      </tr>
     </tbody>
   </table>
   </th>
@@ -61,18 +64,7 @@
     <tbody>
       {% for va in mes4 %}
       <tr>
-        <td>{{ va.prec | linebreaksbr }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  </th>
-  <th>
-  <table>
-    <tbody>
-      {% for va in mes5 %}
-      <tr>
-        <td>{{ va.prec | linebreaksbr }}</td>
+        <td>{{ va.mini | linebreaksbr }}</td>
       </tr>
       {% endfor %}
       <tr>
@@ -84,11 +76,25 @@
   <th>
   <table>
     <tbody>
-      {% for va in mes6 %}
+      {% for va in mes5 %}
       <tr>
-        <td>{{ va.prec | linebreaksbr }}</td>
+        <td>{{ va.mini | linebreaksbr }}</td>
       </tr>
       {% endfor %}
+    </tbody>
+  </table>
+  </th>
+  <th>
+  <table>
+    <tbody>
+      {% for va in mes6 %}
+      <tr>
+        <td>{{ va.mini | linebreaksbr }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>-</td>
+      </tr>
     </tbody>
   </table>
   </th>

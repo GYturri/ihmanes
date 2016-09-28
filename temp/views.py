@@ -39,7 +39,7 @@ class Puno(DetailView):
 		valor = Estacion.objects.get(codpuno = self.kwargs['pk'])
 		context['estaenpuno'] = valor
 		context['temp'] = TermoPlu.objects.filter(estacion = valor)
-		context['numero'] = (int(valor.codpuno) - 1 ) * 31
+		context['numero'] = (int(valor.codpuno) - 1 ) * 30
 		return context
 	
 def prueba(request, pk):
